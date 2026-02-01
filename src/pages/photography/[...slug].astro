@@ -54,9 +54,10 @@ const { Content } = await album.render();
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
     const lightboxCaption = document.getElementById("lightbox-caption");
-    const closeBtn = document.getElementById("close-lightbox");
     
-    // If these elements don't exist, stop the script immediately
+    // FIXED: The ID now matches the HTML button (lightbox-close)
+    const closeBtn = document.getElementById("lightbox-close"); 
+    
     if (!lightbox || !lightboxImg || !lightboxCaption) return;
 
     const images = document.querySelectorAll(".photo-gallery img");
@@ -78,19 +79,22 @@ const { Content } = await album.render();
         }
         
         lightbox.classList.remove("hidden");
+        // Force a small delay to ensure opacity transition works
+        setTimeout(() => lightbox.classList.remove("opacity-0"), 10);
       });
     });
 
     const hide = () => {
-        lightbox.classList.add("hidden");
-        lightboxImg.src = "";
+        lightbox.classList.add("opacity-0");
+        setTimeout(() => {
+          lightbox.classList.add("hidden");
+          lightboxImg.src = "";
+        }, 300);
     };
 
     closeBtn?.addEventListener("click", hide);
-
     lightbox.addEventListener("click", (e) => {
       const target = e.target as HTMLElement;
-      // We check if the user clicked the background or the relative container
       if (target === lightbox || target.closest(".relative")) {
         hide();
       }
