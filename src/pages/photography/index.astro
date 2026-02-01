@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro"; // <--- This was the fix
+import Container from "@components/Container.astro";
+import { SITE } from "@consts";
+
+const albums = (await getCollection("photography")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<PageLayout title={`Photography | ${SITE.NAME}`} description="Visual diary">
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        <h1 class="text-3xl md:text-4xl leading-tight">Photography</h1>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate">
+        {albums.map((album) => (
+          <a 
+            href={`/photography/${album.slug}`} 
+            class="group relative block overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[4/3]"
+          >
+            <img 
+              src={album.data.cover} 
+              alt={album.data.title}
+              class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+            />
+            <div class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-white text-lg font-medium">{album.data.title}</h3>
+              <p class="text-neutral-300 text-sm">{album.data.date.getFullYear()}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </Container>
+</PageLayout>
