@@ -5,7 +5,7 @@ import tailwind from "@astrojs/tailwind";
 import remarkGfm from "remark-gfm";
 
 export default defineConfig({
-  site: "https://astro-nano-demo.vercel.app",
+  site: "https://drt-media.com",
   
   // 1. Apply to standard .md files (THIS IS WHAT WAS MISSING)
   markdown: {
