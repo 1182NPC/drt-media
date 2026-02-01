@@ -4,12 +4,12 @@ export const SITE: Site = {
   NAME: "drt.media",
   EMAIL: "npd.xsi9g@slmail.me", 
   NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_PHOTO_ALBUMS_ON_HOMEPAGE: 3, // <--- The new setting
+  NUM_PHOTO_ALBUMS_ON_HOMEPAGE: 3, 
 };
 
 export const HOME: Metadata = {
   TITLE: "Home",
-  DESCRIPTION: "Comparative Law Specialist & Web Developer.",
+  DESCRIPTION: "Berlin-based Comparative Law Specialist & Web Developer.",
 };
 
 export const BLOG: Metadata = {
