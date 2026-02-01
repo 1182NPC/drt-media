@@ -73,28 +73,34 @@ html.scrolled #back-to-top {
   @apply opacity-100 pointer-events-auto;
 }
 
+/* --- FOOTNOTE STYLING START --- */
+
+/* 1. Style the container (add the line and spacing) */
 .footnotes {
   margin-top: 3rem;
   border-top: 1px solid #e5e5e5;
   padding-top: 1rem;
+  font-family: sans-serif; /* Optional: keeps references clean */
 }
 
+/* 2. Bring back the numbers (1. 2. 3.) */
 .footnotes ol {
-  list-style-type: decimal;
+  list-style-type: decimal !important;
   margin-left: 1.5rem;
 }
 
+/* 3. Separate the references */
 .footnotes li {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   padding-left: 0.5rem;
 }
 
+/* 4. HIDE the "Blue Undo Button" (Back Reference) */
 .data-footnote-backref {
-  text-decoration: none;
-  margin-left: 0.25rem;
-  color: #a8a29e;
+  display: none !important;
 }
 
+/* Dark mode line color */
 html.dark .footnotes {
   border-top-color: #44403c;
 }
