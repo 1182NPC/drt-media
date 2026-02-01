@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets"; // <--- Add this import
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
@@ -29,10 +30,10 @@ const photography = (await getCollection("photography"))
             Comparative Law Specialist & Web Developer based in Berlin.
           </p>
           <p class="animate">
-            I have been extremely fortunate to benefit from a broad education in several different legal systems through my studies at The University of Birmingham, Freie Universität Berlin, and Tongji University Shanghai.
+            I have been very fortunate to benefit from a broad education in several different legal systems through my studies at The University of Birmingham, Humboldt Universität Berlin, and Tongji University Shanghai.
             Legal concepts love to travel around the world, but their implementation often tells you a great deal about local culture and history.
-            These stories and insights into different histories and cultures is what has made Comparative Law such a rewarding field for me.
-            I continue, when I have time, to write a few short articles on subjects I find particulary interesting which you can find in my blog.
+            These stories and insights into different histories and cultures is why I find Comparative so rewarding.
+            I continue, when I have time, to write a few short articles on subjects I find particularly interesting which you can find in my blog.
             Other interests of mine include photography - which I have sadly neglected recently - and the violin - which I am happy to say I get to play a great deal at the moment.
           </p>
         </article>
@@ -69,15 +70,14 @@ const photography = (await getCollection("photography"))
         <div class="grid grid-cols-2 gap-4">
           {photography.map(album => (
             /* FIXED LINK: Now points to the anchor on the main page */
-            <a href={`/photography#${album.slug}`} class="group relative block overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[4/3]">
-              <img 
+            <a href="/photography" class="group relative block overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[4/3]">
+              <Image 
                 src={album.data.cover} 
                 alt={album.data.title}
+                width={720}  
+                height={480}
                 class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
               />
-              <div class="absolute inset-0 flex flex-col justify-end p-3 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span class="text-white text-sm font-medium">{album.data.title}</span>
-              </div>
             </a>
           ))}
         </div>

@@ -2,9 +2,11 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
+// 1. RENAME IMPORT to avoid conflict with global 'Image'
+import { Image as AstroImage } from "astro:assets"; 
 
 const photos = (await getCollection("photography")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
 );
 ---
 
@@ -25,15 +27,19 @@ const photos = (await getCollection("photography")).sort(
               zIndex: index 
             }}
           >
+             
             <div 
               class="lightbox-trigger cursor-zoom-in aspect-video w-full relative overflow-hidden"
-              data-src={photo.data.cover}
+              data-src={photo.data.cover.src}
               data-caption={photo.data.description}
             >
-              <img 
+              <AstroImage 
                 src={photo.data.cover} 
                 alt={photo.data.title}
+                width={1500}
+                quality={90}
                 class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                loading={index === 0 ? "eager" : "lazy"} 
               />
               
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -64,6 +70,7 @@ const photos = (await getCollection("photography")).sort(
 </PageLayout>
 
 <script>
+  // ... (keep your existing script exactly as it is)
   function setupGallery() {
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
@@ -77,7 +84,7 @@ const photos = (await getCollection("photography")).sort(
       trigger.addEventListener("click", (e) => {
         e.preventDefault();
         const el = trigger as HTMLElement;
-        const src = el.dataset.src;
+        const src = el.dataset.src; 
         const caption = el.dataset.caption;
 
         if (src) lightboxImg.src = src;
@@ -110,6 +117,7 @@ const photos = (await getCollection("photography")).sort(
              hide();
         }
     });
+
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") hide();
     });

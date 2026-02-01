@@ -10,16 +10,16 @@ const blog = defineCollection({
   }),
 });
 
-// --- ADD THIS SECTION ---
 const photography = defineCollection({
   type: "content",
-  schema: z.object({
+  // 1. Change schema to a function that accepts { image }
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string().optional(),
     date: z.coerce.date(),
-    cover: z.string(),
+    // 2. Use image() helper instead of z.string()
+    cover: image(), 
   }),
 });
 
-// --- CHANGE THIS LINE ---
 export const collections = { blog, photography };
