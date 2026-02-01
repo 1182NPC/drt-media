@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+).slice(0, 3);
+---
+
+<Layout title="Nicholas Drömert | drt-media">
+	<main>
+		<header>
+			<h1>Nicholas Drömert</h1>
+			<p class="tagline"> Comparative Law Specialist • Photographer • Legal Tech</p>
+		</header>
+
+		<div class="content-grid">
+			<section class="column legal">
+				<h2>Legal Analysis</h2>
+				<div class="list">
+					{posts.map((post) => (
+						<article class="item">
+							<span class="date">{post.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'short' })}</span>
+							<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+						</article>
+					))}
+				</div>
+				<a href="/blog" class="nav-link">Full Archive →</a>
+			</section>
+
+			<section class="column media">
+				<h2>Visuals</h2>
+				<p class="desc">A study of light and structure.</p>
+				<div class="gallery-teaser">
+					<div class="placeholder">Latest Series: Berlin 2026</div>
+				</div>
+				<a href="/photography" class="nav-link">View Gallery →</a>
+			</section>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	:global(body) { background-color: #0a0a0a; color: #d1d1d1; font-family: 'Inter', sans-serif; }
+	main { max-width: 900px; margin: 4rem auto; padding: 0 2rem; }
+	header { margin-bottom: 4rem; border-left: 2px solid #333; padding-left: 1.5rem; }
+	h1 { font-size: 1.8rem; letter-spacing: -0.02em; color: #fff; margin: 0; }
+	.tagline { font-family: monospace; color: #666; margin-top: 0.5rem; }
+	.content-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; }
+	h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 2rem; }
+	.item { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
+	.date { font-family: monospace; font-size: 0.75rem; color: #444; }
+	a { color: #aaa; text-decoration: none; transition: color 0.2s; }
+	a:hover { color: #fff; }
+	.nav-link { display: inline-block; margin-top: 2rem; font-size: 0.8rem; color: #555; }
+	.placeholder { aspect-ratio: 4/3; border: 1px solid #222; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #333; text-transform: uppercase; }
+	
+	@media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; gap: 3rem; } }
+</style>
