@@ -72,3 +72,29 @@ html #back-to-top {
 html.scrolled #back-to-top {
   @apply opacity-100 pointer-events-auto;
 }
+
+.footnotes {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 1rem;
+}
+
+.footnotes ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+}
+
+.footnotes li {
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+}
+
+.data-footnote-backref {
+  text-decoration: none;
+  margin-left: 0.25rem;
+  color: #a8a29e;
+}
+
+html.dark .footnotes {
+  border-top-color: #44403c;
+}
