@@ -170,16 +170,18 @@ function toggleTheme(dark) {
     document.head.removeChild(css);
   }
 
-  function preloadTheme() {
+function preloadTheme() {
     const userTheme = localStorage.theme;
-
+    
     if (userTheme === "light" || userTheme === "dark") {
+      // If the user has explicitly chosen a theme, respect it
       toggleTheme(userTheme === "dark");
     } else {
-      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+      // If no history exists, FORCE DARK MODE (ignoring system preference)
+      toggleTheme(true); 
     }
   }
-
+  
   document.addEventListener("DOMContentLoaded", () => init());
   document.addEventListener("astro:after-swap", () => init());
   preloadTheme();
