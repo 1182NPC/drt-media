@@ -6,16 +6,14 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
 
-// 1. Fetch Blog Posts
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
-// 2. Fetch Photography Albums (New!)
 const photography = (await getCollection("photography"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_PHOTO_ALBUMS_ON_HOMEPAGE);
+  .slice(0, 3); // Limit to 3 items
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -32,9 +30,10 @@ const photography = (await getCollection("photography"))
           </p>
           <p class="animate">
             I have been extremely fortunate to benefit from a broad education in several different legal systems through my studies at The University of Birmingham, Freie Universität Berlin, and Tongji University Shanghai.
-            Legal concepts love to travel around the world, but their implementation often tells you a great deal about local culture and history. 
-            These stories and insights into different histories and cultures is what has made Comparative Law such a rewarding field for me. I continue, when I have time, to write a few short articles on subjects I find particulary interetsing which you can find in my blog. 
-            Other intests of mind include photograhy - which I have sadly neglected recently - and the violin - which I am happy to say I get to play a great deal at the moment.
+            Legal concepts love to travel around the world, but their implementation often tells you a great deal about local culture and history.
+            These stories and insights into different histories and cultures is what has made Comparative Law such a rewarding field for me.
+            I continue, when I have time, to write a few short articles on subjects I find particulary interesting which you can find in my blog.
+            Other interests of mine include photography - which I have sadly neglected recently - and the violin - which I am happy to say I get to play a great deal at the moment.
           </p>
         </article>
       </section>
@@ -66,9 +65,11 @@ const photography = (await getCollection("photography"))
             See all photos
           </Link>
         </div>
-        <div class="grid grid-cols-2 gap-4">
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
           {photography.map(album => (
-            <a href={`/photography/${album.slug}`} class="group relative block overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[4/3]">
+            /* FIXED LINK: Now points to the anchor on the main page */
+            <a href={`/photography#${album.slug}`} class="group relative block overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-square">
               <img 
                 src={album.data.cover} 
                 alt={album.data.title}
@@ -96,7 +97,7 @@ const photography = (await getCollection("photography"))
             </li>
           ))}
           <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+             <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
               {SITE.EMAIL}
             </Link>
           </li>
