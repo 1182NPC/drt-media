@@ -58,8 +58,8 @@ One of the blessings of blog as opposed to an academic article is that I neither
 
 [^16]: Nicholas Campbell, ‘Individual rights and the environmental public interest: A comparison of German and Chinese approaches to environmental litigation’ (2023) 32(1) Review of European, Comparative & International Environmental Law 105–118 https://onlinelibrary.wiley.com/doi/10.1111/reel.12466 accessed 2 February 2026.
 
-[^17] BGH NJW 1998, 372. see also Berliner Mieterverein, ‘Musik in der Mietwohnung: Was erlaubt ist und was nicht’ (Infoservice Nr 94, 25 October 2024) https://www.berliner-mieterverein.de/recht/infoblaetter/info-94-musik-in-der-mietwohnung-was-erlaubt-ist-und-was-nicht.htm accessed 2 February 2026.
+[^17]: BGH NJW 1998, 372. see also Berliner Mieterverein, ‘Musik in der Mietwohnung: Was erlaubt ist und was nicht’ (Infoservice Nr 94, 25 October 2024) https://www.berliner-mieterverein.de/recht/infoblaetter/info-94-musik-in-der-mietwohnung-was-erlaubt-ist-und-was-nicht.htm accessed 2 February 2026.
 
-[^18] Companies Act 2006.
+[^18]: Companies Act 2006.
 
 
