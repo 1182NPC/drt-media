@@ -27,10 +27,10 @@ Now all this might sound like more dogma piled onto an already rigid system, how
 
 [^4]: Reinhard Zimmermann, ‘The German Civil Code and the Development of Private Law in Germany’ (2002) 4 Oxford University Comparative Law Forum <https://ouclf.law.ox.ac.uk/the-german-civil-code-and-the-development-of-private-law-in-germany/> accessed 2 February 2026.
 
-[^5] § 1 BGB and § 1922 Bürgerliches Gesetzbuch [Civil Code] (BGB) 1896.
+[^5]: § 1 BGB and § 1922 Bürgerliches Gesetzbuch [Civil Code] (BGB) 1896.
 
-[^6] David M Trubek, ‘Max Weber on Law and the Rise of Capitalism’ [1972] 3 Wisconsin Law Review 720 <https://core.ac.uk/download/pdf/216912389.pdf> accessed 2 February 2026.
+[^6]: David M Trubek, ‘Max Weber on Law and the Rise of Capitalism’ [1972] 3 Wisconsin Law Review 720 <https://core.ac.uk/download/pdf/216912389.pdf> accessed 2 February 2026.
 
-[^7] Jacco Bomhoff, ‘Getting Legal Reason to Speak for Itself: The Legal Form of the Gutachten and Its Affordances’ (2023) 35 Law & Literature 339 https://eprints.lse.ac.uk/120203/ accessed 2 February 2026; Deutsch für Juristen, ‘Report Style (Gutachtenstil)’ https://deutsch-fuer-juristen.de/en/report-style-gutachtenstil/ accessed 2 February 2026.
+[^7]: Jacco Bomhoff, ‘Getting Legal Reason to Speak for Itself: The Legal Form of the Gutachten and Its Affordances’ (2023) 35 Law & Literature 339 https://eprints.lse.ac.uk/120203/ accessed 2 February 2026; Deutsch für Juristen, ‘Report Style (Gutachtenstil)’ https://deutsch-fuer-juristen.de/en/report-style-gutachtenstil/ accessed 2 February 2026.
 
-[^8] ibid Bomhoff
+[^8]: ibid Bomhoff
