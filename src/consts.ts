@@ -4,7 +4,7 @@ export const SITE: Site = {
   NAME: "drt-media",
   EMAIL: "npd.xsi9g@slmail.me", 
   NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_PHOTO_ALBUMS_ON_HOMEPAGE: 3, 
+  NUM_PHOTO_ALBUMS_ON_HOMEPAGE: 6, 
 };
 
 export const HOME: Metadata = {
