@@ -26,6 +26,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="citation_author_orcid" content="https://orcid.org/0000-0002-5332-0011" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/x-icon" href="/favicon.svg">
 <meta name="generator" content={Astro.generator} />
@@ -39,9 +40,8 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
-<title>{title ? `${title.toLowerCase()} | drt media` : "drt media | comparative law specialist"}</title>
-<meta name="title" content={title ? `${title.toLowerCase()} | drt media` : "drt media"} />
-<meta name="description" content={description || "berlin-based comparative law specialist and photographer."} />
+<title>{title ? `${title} | drt media` : "drt media | Comparative Law Specialist"}</title>
+<meta name="description" content={description || "Berlin-based Comparative Law specialist and developer."} />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
