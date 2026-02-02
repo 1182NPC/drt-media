@@ -13,8 +13,12 @@ const blog = (await getCollection("blog"))
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
 const photography = (await getCollection("photography"))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_PHOTO_ALBUMS_ON_HOMEPAGE); 
+  .sort((a, b) => {
+    const orderA = a.data.order ?? 999;
+    const orderB = b.data.order ?? 999;
+    return orderA - orderB;
+  })
+  .slice(0, SITE.NUM_PHOTO_ALBUMS_ON_HOMEPAGE);
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -32,7 +36,7 @@ const photography = (await getCollection("photography"))
           <p class="animate">
             I have been very fortunate to benefit from a broad education in several different legal systems through my studies at The University of Birmingham, Humboldt Universität Berlin, and Tongji University Shanghai.
             Legal concepts love to travel around the world, but their implementation often tells you a great deal about local culture and history.
-            These stories and insights into different histories and cultures is why I find Comparative so rewarding.
+            These stories and insights into different histories and cultures is why I find Comparative Law so rewarding.
             I continue, when I have time, to write a few short articles on subjects I find particularly interesting which you can find in my blog.
             Other interests of mine include photography - which I have sadly neglected recently - and the violin - which I am happy to say I get to play a great deal at the moment.
           </p>

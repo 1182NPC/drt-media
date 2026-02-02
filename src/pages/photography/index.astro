@@ -4,10 +4,13 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import { Image as AstroImage } from "astro:assets";
 
-// Sort by Oldest -> Newest (Chronological)
-const photos = (await getCollection("photography")).sort(
-  (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
-);
+// Sort by order given
+const photos = (await getCollection("photography")).sort((a, b) => {
+  // If "order" is missing, treat it as number 999 (put it at the end)
+  const orderA = a.data.order ?? 999; 
+  const orderB = b.data.order ?? 999;
+  return orderA - orderB; // Low numbers first (1, 2, 3...)
+});
 ---
 
 <PageLayout title="Photography" description="Visual diary">

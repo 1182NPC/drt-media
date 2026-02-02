@@ -19,6 +19,8 @@ const photography = defineCollection({
     date: z.coerce.date(),
     // 2. Use image() helper instead of z.string()
     cover: image(), 
+    // 3. Add optional order field
+    order: z.number().optional()
   }),
 });
 
