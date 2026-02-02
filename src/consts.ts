@@ -27,5 +27,9 @@ export const SOCIALS: Socials = [
   { 
     NAME: "linkedin",
     HREF: "https://www.linkedin.com/"
+  },
+  {
+    NAME: "orcid",
+    HREF: "https://orcid.org/0000-0002-5332-0011" 
   }
 ];
