@@ -2,9 +2,9 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-// 1. RENAME IMPORT to avoid conflict with global 'Image'
-import { Image as AstroImage } from "astro:assets"; 
+import { Image as AstroImage } from "astro:assets";
 
+// Sort by Oldest -> Newest (Chronological)
 const photos = (await getCollection("photography")).sort(
   (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
 );
@@ -56,21 +56,23 @@ const photos = (await getCollection("photography")).sort(
     </div>
   </Container>
 
-  <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm transition-opacity duration-300 opacity-0 flex items-center justify-center p-4">
-    <button id="lightbox-close" class="absolute top-5 right-5 text-white/80 hover:text-white z-[110] p-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-sm transition-opacity duration-300 opacity-0 flex items-center justify-center p-4">
+    
+    <button id="lightbox-close" class="absolute top-5 right-5 text-white/50 hover:text-white transition-colors z-[110] p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
     
-    <div class="relative flex flex-col items-center justify-center max-h-[85vh] max-w-[90vw]">
-      <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-full object-contain shadow-2xl" />
-      <div id="lightbox-caption" class="absolute bottom-0 w-full bg-white/15 backdrop-blur-md text-black text-center py-2 px-4 text-sm font-medium transition-transform duration-300 translate-y-full">
+    <div class="relative flex flex-col items-center max-h-[90vh] max-w-[95vw]">
+      <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-full object-contain shadow-2xl rounded-sm" />
+      
+      <div id="lightbox-caption" class="mt-3 text-center text-xs tracking-wider text-white/70 font-light">
       </div>
     </div>
+
   </div>
 </PageLayout>
 
 <script>
-  // ... (keep your existing script exactly as it is)
   function setupGallery() {
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
@@ -89,21 +91,22 @@ const photos = (await getCollection("photography")).sort(
 
         if (src) lightboxImg.src = src;
         
+        // Simpler Logic: Just set text, no animations needed
         if (caption) {
           lightboxCaption.textContent = caption;
-          lightboxCaption.classList.remove("translate-y-full");
+          lightboxCaption.classList.remove("hidden");
         } else {
-          lightboxCaption.classList.add("translate-y-full");
+          lightboxCaption.classList.add("hidden");
         }
 
         lightbox.classList.remove("hidden");
+        // Tiny timeout ensures the fade-in transition plays
         setTimeout(() => lightbox.classList.remove("opacity-0"), 10);
       });
     });
 
     const hide = () => {
       lightbox.classList.add("opacity-0");
-      lightboxCaption.classList.add("translate-y-full");
       setTimeout(() => {
         lightbox.classList.add("hidden");
         lightboxImg.src = "";
@@ -113,6 +116,7 @@ const photos = (await getCollection("photography")).sort(
     closeBtn?.addEventListener("click", hide);
     lightbox.addEventListener("click", (e) => {
         const target = e.target as Element;
+        // Close if clicking background (not image or caption)
         if (target.tagName !== "IMG" && !target.closest("#lightbox-caption")) {
              hide();
         }
