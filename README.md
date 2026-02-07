@@ -3,7 +3,7 @@
 The personal website and portfolio of **Nicholas Drömert**, a Comparative Law Specialist & Web Developer based in Berlin.
 
 ## 🔗 Links
-- **Live Site:** [https://drt.media](https://drt.media)
+- **Live Site:** [https://drt.media](https://drt-media)
 - **GitHub:** [https://github.com/1182NPC](https://github.com/1182NPC)
 - **Orchid ID** [https://orcid.org/0000-0002-5332-0011](https://orcid.org/0000-0002-5332-0011)
 
